@@ -1,11 +1,9 @@
 # Archive-Project
-ARCHIVE — Investigative Intelligence Repository
-
 A structured archival platform for documenting major public-interest cases, individuals, organizations, and investigative timelines.
 
 Designed as a research-grade, archive-style system — not a blog, not a news site, not a dashboard.
 
-Overview
+# Overview
 
 ARCHIVE is a structured investigative index built to:
 
