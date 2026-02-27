@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle">Dossier View | THE ARCHIVE</title>
+    <!-- Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Tenor+Sans&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <!-- Supabase Integration -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-client.js"></script>
+</head>
+
+<body class="dossier-workspace">
+
+    <!-- Dossier Top Level Header -->
+    <header class="dossier-header container">
+        <a href="#" onclick="handleGlobalNav('archive')"
+            style="text-decoration: none; color: var(--accent-gold); font-size: 0.7rem; font-family: var(--font-mono); letter-spacing: 0.2em; text-transform: uppercase;">←
+            RETURN TO CENTRAL RECORDS</a>
+    </header>
+
+    <div class="folder-spread">
+
+        <!-- Sidebar: Physical File Stack -->
+        <aside class="file-stack">
+            <div class="folder-tab active" data-tab="overview">
+                <span>FILE_01: EXECUTIVE_SUMMARY</span>
+            </div>
+            <div class="folder-tab" data-tab="timeline">
+                <span>FILE_02: CHRONOLOGY_REPORT</span>
+            </div>
+            <div class="folder-tab" data-tab="evidence">
+                <span>FILE_03: PHYSICAL_EVIDENCE</span>
+            </div>
+            <div class="folder-tab" data-tab="players">
+                <span>FILE_04: PERSONNEL_DOSSERS</span>
+            </div>
+            <div class="folder-tab" data-tab="documents">
+                <span>FILE_05: FINANCIAL_RECORDS</span>
+            </div>
+            <div class="folder-tab" data-tab="impact">
+                <span>FILE_06: CONSEQUENCE_ANALYSIS</span>
+            </div>
+        </aside>
+
+        <!-- Main Workspace: The Paper -->
+        <main class="document-paper" id="paperBody">
+            <div class="paper-stamp">CONFIDENTIAL</div>
+
+            <div id="caseHeader" class="paper-header">
+                <!-- Case title and metadata will be injected here -->
+            </div>
+
+            <div id="tabContent">
+                <!-- Overview Tab -->
+                <div class="tab-content active" data-tab-content="overview" id="overviewContent">
+                    <!-- Injected Content -->
+                </div>
+
+                <!-- Timeline Tab -->
+                <div class="tab-content" data-tab-content="timeline" id="timelineContent">
+                    <!-- Injected Content -->
+                </div>
+
+                <!-- Players Tab -->
+                <div class="tab-content" data-tab-content="players" id="playersContent">
+                    <!-- Injected Content -->
+                </div>
+
+                <!-- Evidence Tab (Visual Files Here) -->
+                <div class="tab-content" data-tab-content="evidence">
+                    <div class="loose-files" id="evidenceContent">
+                        <!-- Individual file icons/cards injected here -->
+                    </div>
+                </div>
+
+                <!-- Documents Tab (More specific files) -->
+                <div class="tab-content" data-tab-content="documents">
+                    <div class="loose-files" id="documentsContent">
+                        <!-- Individual file icons/cards injected here -->
+                    </div>
+                </div>
+
+                <!-- Impact Tab -->
+                <div class="tab-content" data-tab-content="impact" id="impactContent">
+                    <!-- Injected Content -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="case-detail.js"></script>
+</body>
+
+</html>

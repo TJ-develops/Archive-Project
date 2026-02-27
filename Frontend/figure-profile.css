@@ -1,0 +1,517 @@
+:root {
+    --dossier-bg: var(--theme-bg);
+    --dossier-surface: var(--theme-surface);
+    --dossier-border: var(--theme-border);
+    --dossier-accent: var(--theme-accent);
+    --dossier-text-primary: var(--theme-text-primary);
+    --dossier-text-dim: var(--theme-text-dim);
+    --dossier-text-muted: var(--theme-text-muted);
+    --dossier-mono: 'JetBrains Mono', monospace;
+    --dossier-font: 'Inter', -apple-system, blinkmacsystemfont, 'Segoe UI', roboto, sans-serif;
+}
+
+html {
+    background-color: var(--theme-bg) !important;
+}
+
+body.dossier-page {
+    background-color: var(--dossier-bg);
+    color: var(--dossier-text-primary);
+    font-family: var(--dossier-font);
+    min-height: 100vh;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Layout Container — full-width, left-anchored layout */
+.dossier-container {
+    width: 100%;
+    padding: 0 3rem 0 3rem;
+    box-sizing: border-box;
+}
+
+.dossier-grid {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    align-items: start;
+    gap: 3rem;
+    width: 100%;
+}
+
+/* sidebar: Quick Facts & Nav */
+.dossier-sidebar {
+    position: relative;
+    align-self: start;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Main Content Area — right column, holds all page content */
+.dossier-main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    overflow: visible;
+}
+
+/* === HEADER / IDENTITY === */
+.identity-section {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 2.5rem;
+    align-items: start;
+    border-bottom: 1px solid var(--dossier-border);
+    padding-bottom: 2.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.profile-image-container {
+    width: 160px;
+    height: 240px;
+    background: var(--dossier-surface);
+    overflow: hidden;
+    position: relative;
+    border-radius: 4px;
+    border: 1px solid var(--theme-border);
+}
+
+.profile-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.95;
+}
+
+.full-name {
+    font-family: 'Outfit', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+    color: var(--dossier-text-primary);
+}
+
+.primary-descriptor {
+    font-family: var(--dossier-mono);
+    font-size: 13px;
+    color: var(--dossier-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-bottom: 1.5rem;
+}
+
+.identity-summary {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--dossier-text-primary);
+    font-weight: 400;
+}
+
+/* === QUICK FACTS PANEL === */
+.quick-facts {
+    background: var(--dossier-surface);
+    border: 1px solid var(--dossier-border);
+    padding: 1.5rem;
+    border-radius: 4px;
+    box-shadow: none;
+    transition: all 0.3s ease;
+}
+
+.quick-facts h4 {
+    font-family: var(--dossier-mono);
+    font-size: 0.75rem;
+    color: var(--dossier-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.15rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--dossier-border);
+    padding-bottom: 0.75rem;
+}
+
+.fact-item {
+    margin-bottom: 1.25rem;
+}
+
+.fact-label {
+    display: block;
+    font-family: var(--dossier-mono);
+    font-size: 0.65rem;
+    color: var(--dossier-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.35rem;
+    opacity: 0.8;
+}
+
+.fact-value {
+    font-size: 0.95rem;
+    color: var(--dossier-text-primary);
+    font-weight: 500;
+}
+
+/* === DOSSIER NAVIGATION === */
+.dossier-nav {
+    display: none;
+}
+
+.dossier-nav a {
+    text-decoration: none;
+    font-family: var(--dossier-mono);
+    font-size: 11px;
+    color: var(--dossier-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    padding: 0.75rem 1rem;
+    border-left: 2px solid transparent;
+    transition: all 0.2s ease;
+    display: block;
+    line-height: 1.4;
+}
+
+.dossier-nav a.active {
+    color: var(--dossier-accent);
+    border-left-color: var(--dossier-accent);
+    background: rgba(197, 160, 89, 0.05);
+}
+
+/* === CONTENT SECTIONS === */
+.content-section {
+    scroll-margin-top: 140px;
+    margin-bottom: 40px;
+    position: relative;
+    max-width: 860px;
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Section divider */
+/* Section divider removed as sections are already boxed */
+.content-section:not(:first-child)::before {
+    display: none;
+}
+
+.section-label {
+    display: none;
+}
+
+.section-title {
+    font-family: var(--font-serif);
+    font-size: 26px;
+    font-weight: 600;
+    padding-bottom: 8px;
+    margin-bottom: 20px;
+    color: var(--dossier-text-primary);
+    letter-spacing: 0.01em;
+    border-bottom: 1px solid var(--dossier-border);
+}
+
+.section-body {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--dossier-text-primary);
+    width: 100%;
+}
+
+.block-content p {
+    margin-bottom: 20px;
+    max-width: 80ch;
+}
+
+/* SUBHEADINGS */
+.block-content h3 {
+    font-family: var(--font-serif);
+    font-size: 20px;
+    color: var(--dossier-text-primary);
+    font-weight: 600;
+    margin: 2.5rem 0 1rem 0;
+}
+
+.block-content h4 {
+    font-size: 17px;
+    color: var(--dossier-text-primary);
+    font-weight: 500;
+    margin: 1.5rem 0 0.75rem 0;
+    border-left: 2px solid var(--dossier-accent);
+    padding-left: 1rem;
+}
+
+/* LISTS */
+.dossier-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0 2rem 0;
+}
+
+.dossier-list li {
+    position: relative;
+    padding-left: 1.75rem;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.dossier-list li::before {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 10px;
+    width: 6px;
+    height: 1px;
+    background: var(--dossier-accent);
+}
+
+/* INFO BLOCKS */
+.info-block {
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+    .dossier-container {
+        padding: 0 1.5rem;
+    }
+
+    .dossier-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dossier-sidebar {
+        position: relative;
+        top: 0;
+        margin-bottom: 2rem;
+    }
+
+    .dossier-main {
+        max-width: none;
+    }
+
+    .identity-section {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .profile-image-container {
+        margin: 0 auto;
+    }
+}
+
+.info-block h5 {
+    font-family: var(--dossier-mono);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--dossier-accent);
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.info-block h5::before {
+    content: '[';
+    opacity: 0.5;
+}
+
+.info-block h5::after {
+    content: ']';
+    opacity: 0.5;
+}
+
+/* Timeline Formatting */
+.dossier-timeline {
+    position: relative;
+    padding-left: 2rem;
+    border-left: 1px solid var(--dossier-border);
+}
+
+.timeline-event {
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.timeline-event::before {
+    content: '';
+    position: absolute;
+    left: -2.35rem;
+    top: 5px;
+    width: 10px;
+    height: 10px;
+    background: var(--dossier-bg);
+    border: 1px solid var(--dossier-accent);
+    border-radius: 50%;
+}
+
+.event-year {
+    font-family: var(--dossier-mono);
+    font-size: 0.8rem;
+    color: var(--dossier-accent);
+    margin-bottom: 0.5rem;
+}
+
+.event-description {
+    font-size: 0.95rem;
+    color: var(--dossier-text-dim);
+}
+
+/* Network Cards */
+.network-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.5rem;
+}
+
+.network-card {
+    background: transparent;
+    border-bottom: 1px solid var(--dossier-border);
+    padding: 1rem 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.network-card:hover {
+    padding-left: 0.5rem;
+}
+
+.network-tag {
+    font-family: var(--dossier-mono);
+    font-size: 0.55rem;
+    color: var(--dossier-text-muted);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.network-name {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    color: var(--text-primary);
+}
+
+/* References */
+.references-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.ref-item {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 0.85rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--dossier-border);
+}
+
+.ref-index {
+    color: var(--dossier-accent);
+    font-family: var(--dossier-mono);
+}
+
+.ref-link {
+    color: var(--dossier-text-dim);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.ref-link:hover {
+    color: var(--text-primary);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .dossier-container {
+        grid-template-columns: 1fr;
+    }
+
+    .dossier-sidebar {
+        position: relative;
+        top: 0;
+        height: auto;
+    }
+
+    .identity-section {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .profile-image-container {
+        margin: 0 auto 2rem auto;
+    }
+
+    .section-title::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+/* Placeholder Styles */
+.placeholder-text {
+    font-family: var(--dossier-mono);
+    font-size: 0.7rem;
+    color: var(--dossier-text-muted);
+    letter-spacing: 0.1em;
+    padding: 3rem;
+    border: 1px dashed var(--dossier-border);
+    background: rgba(255, 255, 255, 0.02);
+    text-align: center;
+    text-transform: uppercase;
+    margin: 1rem 0;
+}
+
+/* ─── SIDEBAR CONTEXTUAL IMAGE ───────────────────────────────────────────── */
+/* Wrapper slot in the left column — JS sets margin-top to align with
+   the Maria Farmer h3 on the right. */
+.sidebar-contextual {
+    width: 100%;
+}
+
+/* The figure itself fills the sidebar column width */
+.contextual-figure {
+    width: 100%;
+    margin: 0;
+    padding: 0.75rem;
+    border: 1px solid var(--dossier-border);
+    background: var(--dossier-surface);
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+.contextual-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 1px;
+    filter: grayscale(15%);
+}
+
+.contextual-caption {
+    display: block;
+    margin-top: 0.65rem;
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--dossier-text-muted);
+    font-style: italic;
+    font-weight: 400;
+    padding: 0 0.25rem;
+}
+
+/* Mobile: sidebar stacks above content — image appears naturally in flow */
+@media (max-width: 1024px) {
+    .sidebar-contextual {
+        margin-top: 0 !important;
+        /* override JS-set margin on mobile */
+    }
+}

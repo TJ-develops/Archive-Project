@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE ARCHIVE | Systematic Records Room</title>
+    <!-- Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Tenor+Sans&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <!-- Supabase Integration -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-client.js"></script>
+    <script src="theme-manager.js"></script>
+</head>
+
+<body>
+
+    <!-- Global Navigation -->
+    <nav class="global-nav">
+        <div class="nav-brand" id="navHome">THE ARCHIVE</div>
+        <div class="nav-links">
+            <a href="#" data-section="archive">Cases</a>
+            <a href="#" data-section="figures">Figures</a>
+            <a href="#" data-section="orgs">Organizations</a>
+            <a href="#" data-section="ops">Operations</a>
+        </div>
+        <div class="nav-utils">
+            <div class="nav-search">
+                <input type="text" id="globalSearch" placeholder="Search records...">
+            </div>
+            <button id="themeToggle" class="theme-toggle" title="Toggle Light/Dark Mode">
+                <!-- Sun Icon SVG -->
+                <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <!-- Moon Icon SVG -->
+                <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Landing View -->
+    <section id="landing" class="view landing-view">
+        <div class="landing-content">
+            <h1 class="landing-title">The Archive</h1>
+            <p class="landing-intro">A systematic collection of historical controversies, crimes, and significant public
+                events.</p>
+            <button id="enterBtn" class="enter-btn">Enter the Archive</button>
+        </div>
+    </section>
+
+    <!-- Main Hub View -->
+    <section id="hub" class="view hub-view hidden">
+        <header class="view-header">
+            <h1>Central Hub</h1>
+            <p>Select a department to browse the records</p>
+        </header>
+        <div class="hub-grid">
+            <div class="hub-card" data-section="archive">
+                <div class="hub-card-icon">📁</div>
+                <h3>Case Files</h3>
+                <p>Browse systematic alphabetical records of major cases.</p>
+            </div>
+            <div class="hub-card" data-section="figures">
+                <div class="hub-card-icon">👤</div>
+                <h3>Key Figures</h3>
+                <p>Profiles of individuals central to historical events.</p>
+            </div>
+            <div class="hub-card" data-section="orgs">
+                <div class="hub-card-icon">🏢</div>
+                <h3>Organizations</h3>
+                <p>Entities, agencies, and groups behind the scenes.</p>
+            </div>
+            <div class="hub-card" data-section="ops">
+                <div class="hub-card-icon">⚔️</div>
+                <h3>Operations</h3>
+                <p>Classified missions and named operations.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Archive (Structured List) -->
+    <section id="archive" class="view archive-view hidden">
+        <header class="archive-header view-header">
+            <h1>Case Archive</h1>
+            <p class="archive-desc">Documented investigations, prosecutions, systemic failures, and major
+                public-interest cases.</p>
+
+            <div class="archive-filters">
+                <input type="text" placeholder="Search Cases..." class="archive-search-input">
+                <select class="archive-select">
+                    <option>All Categories</option>
+                    <option>Political Corruption</option>
+                    <option>Institutional Abuse</option>
+                    <option>Sex Trafficking</option>
+                </select>
+                <select class="archive-select">
+                    <option>All Jurisdictions</option>
+                    <option>United States</option>
+                    <option>United Kingdom</option>
+                    <option>International</option>
+                </select>
+                <select class="archive-select">
+                    <option>All Statuses</option>
+                    <option>Concluded</option>
+                    <option>Ongoing</option>
+                    <option>Classified</option>
+                </select>
+                <select class="archive-select">
+                    <option>Newest First</option>
+                    <option>Oldest First</option>
+                    <option>Alphabetical</option>
+                </select>
+            </div>
+        </header>
+        <div class="archive-list" id="archiveList">
+            <!-- Cases will be generated here via JS -->
+        </div>
+    </section>
+
+    <!-- Generic Viewport for other sections (Dynamic Content) -->
+    <section id="dynamicView" class="view dynamic-view hidden">
+        <header class="view-header" id="dynamicHeader">
+            <!-- Dynamic title and description -->
+        </header>
+        <div id="dynamicContent" class="dynamic-grid">
+            <!-- Dynamic content will be injected here -->
+        </div>
+    </section>
+
+    <!-- Overlay for Box Contents -->
+    <div id="overlay" class="overlay">
+        <div class="file-catalog">
+            <div class="file-catalog-header">
+                <h3 id="boxTitle">Box Contents</h3>
+                <button id="closeOverlay" class="close-overlay">&times;</button>
+            </div>
+            <ul id="fileList" class="file-list">
+                <!-- Individual files -->
+            </ul>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+</body>
+
+</html>
